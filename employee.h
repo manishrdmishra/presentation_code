@@ -37,6 +37,11 @@ public:
         int salary_;
 };
 
+//*******************************************************************************
+// Helper functions
+//*******************************************************************************
+
+std::vector<Employee> create_employees();
 
 std::string to_string(Designation designation);
 std::string to_string(Department department);
@@ -48,6 +53,8 @@ bool is_developer(const Employee& employee);
 
 std::vector<Employee> managers(const std::vector<Employee>& employees);
 std::vector<Employee> developers(const std::vector<Employee>& employees);
+
+void print_employees(const std::vector<Employee>& employees);
 
 template<typename ContainerType, typename Op>
 std::vector<Employee> change_salary_by(const ContainerType& employees, Op op, int amount)
@@ -74,4 +81,12 @@ void remove_employee_if(ContainerType& employees, Pred pred)
                     employees.end());
 }
 
-void print_employees(const std::vector<Employee>& employees);
+template<typename ContainerType, typename Pred>
+std::pair<ContainerType, ContainerType> paritition_by(const ContainerType& employees, Pred pred)
+{
+    ContainerType first;
+    ContainerType second;
+    std::partition_copy(employees.begin(), employees.end(),
+                        std::back_inserter(first), std::back_inserter(second), pred);
+    return {first, second};
+}

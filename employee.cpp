@@ -33,6 +33,10 @@ void Employee::set_salary(int salary)
     salary_ = salary;
 }
 
+//*******************************************************************************
+// Helper functions
+//*******************************************************************************
+
 bool is_manager(const Employee& employee)
 {
     return employee.designation() == Designation::MANAGER;
@@ -84,6 +88,27 @@ std::ostream& operator<<(std::ostream& out, const Employee& employee)
     out << "Department : " << to_string(employee.department()) << ", ";
     out << "Designation : " << to_string(employee.designation()) << " ";
     return out;
+}
+
+std::vector<Employee> create_employees()
+{
+    std::vector<Employee> employees;
+    employees.reserve(6);
+
+    employees.emplace_back(make_person("foo_0", "bar_0", 25, Gender::FEMALE),
+                    Department::DEVELOPMENT, Designation::SOFTWARE_DEVELOPER, 40000);
+    employees.emplace_back(make_person("foo_1", "bar_1", 20, Gender::FEMALE),
+                    Department::DEVELOPMENT, Designation::SOFTWARE_DEVELOPER, 40000);
+    employees.emplace_back(make_person("foo_2", "bar_2", 35, Gender::MALE),
+                    Department::FINANCE, Designation::ACCOUNTANT, 30000);
+    employees.emplace_back(make_person("foo_3", "bar_3", 55, Gender::MALE),
+                    Department::DEVELOPMENT, Designation::SOFTWARE_DEVELOPER, 60000);
+    employees.emplace_back(make_person("foo_4", "bar_4", 45, Gender::FEMALE),
+                    Department::HR, Designation::MANAGER, 50000);
+    employees.emplace_back(make_person("foo_5", "bar_5", 65, Gender::MALE),
+                    Department::HR, Designation::MANAGER, 80000);
+
+    return employees;
 }
 
 void print_employees(const std::vector<Employee>& employees)
