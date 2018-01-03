@@ -93,8 +93,12 @@ std::ostream& operator<<(std::ostream& out, const Employee& employee)
 std::vector<Employee> create_employees()
 {
     std::vector<Employee> employees;
-    employees.reserve(6);
+    employees.reserve(8);
 
+    employees.emplace_back(make_person("foo_7", "bar_7", 35, Gender::FEMALE),
+                    Department::DEVELOPMENT, Designation::SOFTWARE_LEAD, 70000);
+    employees.emplace_back(make_person("foo_6", "bar_6", 30, Gender::MALE),
+                    Department::DEVELOPMENT, Designation::SOFTWARE_DEVELOPER, 60000);
     employees.emplace_back(make_person("foo_0", "bar_0", 25, Gender::FEMALE),
                     Department::DEVELOPMENT, Designation::SOFTWARE_DEVELOPER, 40000);
     employees.emplace_back(make_person("foo_1", "bar_1", 20, Gender::FEMALE),

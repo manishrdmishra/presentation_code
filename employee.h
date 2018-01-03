@@ -10,6 +10,10 @@ enum class Department {DEVELOPMENT, FINANCE, HR};
 
 enum class Designation {SOFTWARE_DEVELOPER, SOFTWARE_LEAD, ACCOUNTANT, MANAGER};
 
+//*******************************************************************************
+// Employee Interface
+//*******************************************************************************
+
 class Employee {
 public:
     Employee();
