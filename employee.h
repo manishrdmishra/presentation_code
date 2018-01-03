@@ -41,4 +41,14 @@ bool is_developer(const Employee& employee);
 std::vector<Employee> managers(const std::vector<Employee>& employees);
 std::vector<Employee> developers(const std::vector<Employee>& employees);
 
-void increment_salary_by(std::vector<Employee>& employee, int amount);
+template<typename ContainerType, typename Op>
+void change_salary_by(ContainerType& employees, int amount, Op op)
+{
+    std::transform(employees.begin(), employees.end(), std::back_inserter(employees),
+    [amount, op](Employee& employee) -> Employee
+    {
+        auto result = op(employee.salary(), amount);
+        employee.set_salary(result);
+        return employee;
+    });
+}

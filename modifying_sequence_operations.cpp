@@ -26,7 +26,7 @@ int main()
 
     std::cout<< "Number of managers: "<< manager.size() << "\n";
 
-    increment_salary_by(employees, 5000);
+    change_salary_by(employees, 5000, std::plus<int>());
 
     std::cout << "salary : " << employees[0].salary() << "\n";
 

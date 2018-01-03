@@ -1,5 +1,7 @@
 #include "employee.h"
 
+#include <functional>
+
 Employee::Employee()
 {}
 
@@ -48,13 +50,4 @@ std::vector<Employee> managers(const std::vector<Employee>& employees)
     std::copy_if(employees.begin(), employees.end(), std::back_inserter(managers),
         is_manager);
     return managers;
-}
-
-void increment_salary_by(std::vector<Employee>& employees, int amount)
-{
-    std::transform(employees.begin(), employees.end(), std::back_inserter(employees),
-    [amount](Employee& employee) {
-        employee.set_salary(employee.salary() + amount);
-        return employee;
-    });
 }
