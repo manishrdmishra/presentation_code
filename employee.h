@@ -42,13 +42,26 @@ std::vector<Employee> managers(const std::vector<Employee>& employees);
 std::vector<Employee> developers(const std::vector<Employee>& employees);
 
 template<typename ContainerType, typename Op>
-void change_salary_by(ContainerType& employees, int amount, Op op)
+std::vector<Employee> change_salary_by(const ContainerType& employees, Op op, int amount)
 {
-    std::transform(employees.begin(), employees.end(), std::back_inserter(employees),
-    [amount, op](Employee& employee) -> Employee
+    std::vector<Employee> updated_employees;
+    updated_employees.reserve(employees.size());
+
+    std::transform(employees.begin(), employees.end(), std::back_inserter(updated_employees),
+    [amount, op = op](const Employee& employee) -> Employee
     {
         auto result = op(employee.salary(), amount);
-        employee.set_salary(result);
-        return employee;
+        Employee emp(employee);
+        emp.set_salary(result);
+        return emp;
     });
+
+    return updated_employees;
+}
+
+template<typename ContainerType, typename Pred>
+void remove_employee_if(ContainerType& employees, Pred pred)
+{
+    employees.erase(std::remove_if(employees.begin(), employees.end(), pred),
+                    employees.end());
 }
