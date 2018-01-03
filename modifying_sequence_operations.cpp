@@ -3,8 +3,6 @@
 #include <iostream>
 #include <vector>
 
-
-
 int main()
 {
     std::vector<Employee> employees;
@@ -36,6 +34,7 @@ int main()
     remove_employee_if(employees, employee_older_than_60);
 
     std::cout << "New size of employees: " << employees.size() << "\n";
+    print_employees(employees);
 
     return 0;
 }

@@ -3,6 +3,8 @@
 #include "person.h"
 #include <memory>
 #include <vector>
+#include <iostream>
+#include <iterator>
 
 enum class Department {DEVELOPMENT, FINANCE, HR};
 
@@ -35,6 +37,12 @@ public:
         int salary_;
 };
 
+
+std::string to_string(Designation designation);
+std::string to_string(Department department);
+
+std::ostream& operator<<(std::ostream& out, const Employee& employee);
+
 bool is_manager(const Employee& employee);
 bool is_developer(const Employee& employee);
 
@@ -65,3 +73,5 @@ void remove_employee_if(ContainerType& employees, Pred pred)
     employees.erase(std::remove_if(employees.begin(), employees.end(), pred),
                     employees.end());
 }
+
+void print_employees(const std::vector<Employee>& employees);

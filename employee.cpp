@@ -51,3 +51,42 @@ std::vector<Employee> managers(const std::vector<Employee>& employees)
         is_manager);
     return managers;
 }
+
+std::string to_string(Designation designation)
+{
+    switch (designation) {
+        case Designation::SOFTWARE_DEVELOPER:
+            return "Software Developer";
+        case Designation::SOFTWARE_LEAD:
+            return "Software Lead";
+        case Designation::MANAGER:
+            return "Manager";
+        case Designation::ACCOUNTANT:
+            return "Accountant";
+    }
+}
+
+std::string to_string(Department department)
+{
+    switch (department) {
+        case Department::DEVELOPMENT:
+            return "Development";
+        case Department::FINANCE:
+            return "Finance";
+        case Department::HR:
+            return "HR";
+    }
+}
+
+std::ostream& operator<<(std::ostream& out, const Employee& employee)
+{
+    out << "Name : " << employee.name() << ", ";
+    out << "Department : " << to_string(employee.department()) << ", ";
+    out << "Designation : " << to_string(employee.designation()) << " ";
+    return out;
+}
+
+void print_employees(const std::vector<Employee>& employees)
+{
+    std::copy(employees.begin(), employees.end(), std::ostream_iterator<Employee>(std::cout, "\n"));
+}
