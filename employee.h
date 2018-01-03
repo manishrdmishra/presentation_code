@@ -2,6 +2,7 @@
 
 #include "person.h"
 #include <memory>
+#include <vector>
 
 enum class Department {DEVELOPMENT, FINANCE, HR};
 
@@ -11,7 +12,7 @@ class Employee {
 public:
     Employee();
     Employee(std::unique_ptr<Person> person, Department department,
-        Designation designation);
+        Designation designation, int salary);
 
         std::string name() const;
         std::string first_name() const { return person_->first_name(); }
@@ -28,8 +29,16 @@ public:
         void set_salary(int salary);
 
     private:
-        std::unique_ptr<Person> person_{nullptr};
+        std::shared_ptr<Person> person_{nullptr};
         Department department_{Department::DEVELOPMENT};
         Designation designation_{Designation::SOFTWARE_DEVELOPER};
         int salary_;
 };
+
+bool is_manager(const Employee& employee);
+bool is_developer(const Employee& employee);
+
+std::vector<Employee> managers(const std::vector<Employee>& employees);
+std::vector<Employee> developers(const std::vector<Employee>& employees);
+
+void increment_salary_by(std::vector<Employee>& employee, int amount);
