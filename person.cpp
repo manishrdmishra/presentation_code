@@ -28,8 +28,24 @@ Gender Person::gender() const
     return gender_;
 }
 
+//*******************************************************************************
+// Helper functions
+//*******************************************************************************
+
 std::unique_ptr<Person> make_person(std::string first_name, std::string last_name,
     int age, Gender gender)
 {
         return std::make_unique<Person>(Person{first_name, last_name, age, gender});
+}
+
+std::vector<Person> create_persons()
+{
+    std::vector<Person> persons {
+        {"foo_0", "bar_0", 40, Gender::MALE},
+        {"foo_1", "bar_1", 30, Gender::MALE},
+        {"foo_2", "bar_2", 25, Gender::FEMALE},
+        {"foo_3", "bar_3", 50, Gender::FEMALE}
+    };
+
+    return persons;
 }

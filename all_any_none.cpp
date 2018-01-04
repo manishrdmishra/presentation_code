@@ -7,24 +7,14 @@
 // non modiying sequence operations
 int main()
 {
-    std::vector<Person> persons {
-        {"foo_0", "bar_0", 40, Gender::MALE},
-        {"foo_1", "bar_1", 30, Gender::MALE},
-        {"foo_2", "bar_2", 25, Gender::FEMALE},
-        {"foo_3", "bar_3", 50, Gender::FEMALE}
-    };
+    auto persons = create_persons();
 
-    auto is_any_person_above_age_50 = std::any_of(persons.begin(),
-                                    persons.end(),[](const Person& person)
-                                    { return person.age() > 50; }
-                                    );
+    auto person_above_age_50 = [](const Person& person) { return std::greater<int>()(person.age(), 50);};
+    auto is_any_person_above_age_50 = exist_any_for(persons, person_above_age_50);
     std::cout<< "Is any person above age 50: "<< is_any_person_above_age_50 << "\n";
 
-    auto are_all_of_above_age_20 = std::all_of(persons.begin(),
-                                    persons.end(),[](const Person& person)
-                                    { return person.age() > 20; }
-                                    );
-
+    auto person_above_age_20 = [](const Person& person) { return person.age() > 20; };
+    auto are_all_of_above_age_20 = all_are_true_for(persons, person_above_age_20);
     std::cout<< "Are all persons above age 20: "<< are_all_of_above_age_20 << "\n";
 
     auto person_with_age_30 = std::find_if(persons.begin(), persons.end(), [](const Person& person)
