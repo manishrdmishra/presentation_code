@@ -35,7 +35,7 @@ Gender Person::gender() const
 std::unique_ptr<Person> make_person(std::string first_name, std::string last_name,
     int age, Gender gender)
 {
-        return std::make_unique<Person>(Person{first_name, last_name, age, gender});
+        return std::make_unique<Person>(first_name, last_name, age, gender);
 }
 
 std::vector<Person> create_persons()
