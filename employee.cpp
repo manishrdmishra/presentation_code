@@ -42,10 +42,14 @@ bool is_manager(const Employee& employee)
     return employee.designation() == Designation::MANAGER;
 }
 
+//*******************************************************************************
+
 bool is_developer(const Employee& employee)
 {
     return employee.designation() == Designation::SOFTWARE_DEVELOPER;
 }
+
+//*******************************************************************************
 
 std::vector<Employee> managers(const std::vector<Employee>& employees)
 {
@@ -55,6 +59,8 @@ std::vector<Employee> managers(const std::vector<Employee>& employees)
         is_manager);
     return managers;
 }
+
+//*******************************************************************************
 
 std::string to_string(Designation designation)
 {
@@ -70,6 +76,8 @@ std::string to_string(Designation designation)
     }
 }
 
+//*******************************************************************************
+
 std::string to_string(Department department)
 {
     switch (department) {
@@ -82,6 +90,8 @@ std::string to_string(Department department)
     }
 }
 
+//*******************************************************************************
+
 std::ostream& operator<<(std::ostream& out, const Employee& employee)
 {
     out << "Name : " << employee.name() << ", ";
@@ -89,6 +99,8 @@ std::ostream& operator<<(std::ostream& out, const Employee& employee)
     out << "Designation : " << to_string(employee.designation()) << " ";
     return out;
 }
+
+//*******************************************************************************
 
 std::vector<Employee> create_employees()
 {
@@ -115,7 +127,11 @@ std::vector<Employee> create_employees()
     return employees;
 }
 
+//*******************************************************************************
+
 void print_employees(const std::vector<Employee>& employees)
 {
     std::copy(employees.begin(), employees.end(), std::ostream_iterator<Employee>(std::cout, "\n"));
 }
+
+//*******************************************************************************

@@ -38,6 +38,8 @@ std::unique_ptr<Person> make_person(std::string first_name, std::string last_nam
         return std::make_unique<Person>(first_name, last_name, age, gender);
 }
 
+//*******************************************************************************
+
 std::vector<Person> create_persons()
 {
     std::vector<Person> persons {
@@ -49,3 +51,5 @@ std::vector<Person> create_persons()
 
     return persons;
 }
+
+//*******************************************************************************

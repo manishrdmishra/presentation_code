@@ -7,7 +7,7 @@
 enum class Gender {MALE, FEMALE};
 
 //*******************************************************************************
-// Person Interface 
+// Person Interface
 //*******************************************************************************
 
 class Person
@@ -38,14 +38,20 @@ std::unique_ptr<Person>
 
 std::vector<Person> create_persons();
 
+//*******************************************************************************
+
 template<typename ContainerType, typename Pred>
 bool exist_any_for(const ContainerType& c, const Pred pred)
 {
     return std::any_of(std::begin(c), std::end(c), pred);
 }
 
+//*******************************************************************************
+
 template<typename ContainerType, typename Pred>
 bool all_are_true_for(const ContainerType& c, const Pred pred)
 {
     return std::all_of(std::begin(c), std::end(c), pred);
 }
+
+//*******************************************************************************

@@ -60,6 +60,8 @@ std::vector<Employee> developers(const std::vector<Employee>& employees);
 
 void print_employees(const std::vector<Employee>& employees);
 
+//*******************************************************************************
+
 template<typename ContainerType, typename Op>
 std::vector<Employee> change_salary_by(const ContainerType& employees, Op op, int amount)
 {
@@ -78,12 +80,16 @@ std::vector<Employee> change_salary_by(const ContainerType& employees, Op op, in
     return updated_employees;
 }
 
+//*******************************************************************************
+
 template<typename ContainerType, typename Pred>
 void remove_employee_if(ContainerType& employees, Pred pred)
 {
     employees.erase(std::remove_if(employees.begin(), employees.end(), pred),
                     employees.end());
 }
+
+//*******************************************************************************
 
 template<typename ContainerType, typename Pred>
 std::pair<ContainerType, ContainerType> paritition_by(const ContainerType& employees, Pred pred)
@@ -94,3 +100,5 @@ std::pair<ContainerType, ContainerType> paritition_by(const ContainerType& emplo
                         std::back_inserter(first), std::back_inserter(second), pred);
     return {first, second};
 }
+
+//*******************************************************************************
