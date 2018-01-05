@@ -14,7 +14,7 @@ char* copy(char * source)
     return destination_str_ptr;
 }
 
-int critical_addition(int a, int b)
+int critical_addition_exception_unsafe(int a, int b)
 {
     m.lock();
     int c = a + b;
@@ -24,7 +24,7 @@ int critical_addition(int a, int b)
     return c;
 }
 
-void divide(int a, int b)
+void divide_exception_unsafe(int a, int b)
 {
     int *result_ptr = new int;
     *result_ptr = a/b;
@@ -32,6 +32,27 @@ void divide(int a, int b)
     // an exception here means memory pointed by result_ptr will never be released
     delete result_ptr;
 }
+
+// tedious and verbose
+void divide_exception_safe(int a, int b)
+{
+    int *result_ptr = new int;
+    *result_ptr = a/b;
+    try {
+    //...
+    }
+    catch(std::exception& e) { delete result_ptr; throw; }
+    delete result_ptr;
+}
+
+void use_file_exception_unsafe(const char* fn)
+{
+    FILE* f = fopen(fn,"w"); // open file fn
+    // use f
+    // an exception here means file will never closed
+    fclose(f); // close file fn
+}
+
 
 int main()
 {
@@ -55,9 +76,9 @@ int main()
     std::cout << "you entered : " << a << ", " << b << "\n";
     std::cout << "result of division : " << c << "\n";
 
-    auto addition_result = critical_addition(4, 5);
+    auto addition_result = critical_addition_exception_unsafe(4, 5);
 
-    divide(8, 2);
+    divide_exception_unsafe(8, 2);
 
     delete cloned;
     return 0;
