@@ -9,7 +9,23 @@ int main()
 {
     auto persons = create_persons();
 
+    // using raw loops
+
+    bool persone_above_50_found = false;
+
+    for (auto it = persons.begin(); it != persons.end(); ++it)
+    {
+        if(it->age() > 50)
+        {
+            persone_above_50_found = true;
+            break;
+        }
+    }
+
+    std::cout<< "Is any person above age 50: "<< persone_above_50_found << "\n";
+
     auto person_above_age_50 = [](const Person& person) { return std::greater<int>()(person.age(), 50);};
+
     auto is_any_person_above_age_50 = exist_any_for(persons, person_above_age_50);
     std::cout<< "Is any person above age 50: "<< is_any_person_above_age_50 << "\n";
 
@@ -26,7 +42,7 @@ int main()
     }
 
     auto female_count = std::count_if(persons.begin(), persons.end(), [](const Person& person)
-                        {return person.gender() == Gender::FEMALE;
+                        {return person.gender() == Gender::Female;
                         });
 
     std::cout << "female count: " << female_count << "\n";

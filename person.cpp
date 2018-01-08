@@ -43,10 +43,10 @@ std::unique_ptr<Person> make_person(std::string first_name, std::string last_nam
 std::vector<Person> create_persons()
 {
     std::vector<Person> persons {
-        {"foo_0", "bar_0", 40, Gender::MALE},
-        {"foo_1", "bar_1", 30, Gender::MALE},
-        {"foo_2", "bar_2", 25, Gender::FEMALE},
-        {"foo_3", "bar_3", 50, Gender::FEMALE}
+        {"foo_0", "bar_0", 40, Gender::Male},
+        {"foo_1", "bar_1", 30, Gender::Male},
+        {"foo_2", "bar_2", 25, Gender::Female},
+        {"foo_3", "bar_3", 50, Gender::Female}
     };
 
     return persons;

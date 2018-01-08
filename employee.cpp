@@ -39,14 +39,14 @@ void Employee::set_salary(int salary)
 
 bool is_manager(const Employee& employee)
 {
-    return employee.designation() == Designation::MANAGER;
+    return employee.designation() == Designation::Manager;
 }
 
 //*******************************************************************************
 
 bool is_developer(const Employee& employee)
 {
-    return employee.designation() == Designation::SOFTWARE_DEVELOPER;
+    return employee.designation() == Designation::Developer;
 }
 
 //*******************************************************************************
@@ -65,13 +65,13 @@ std::vector<Employee> managers(const std::vector<Employee>& employees)
 std::string to_string(Designation designation)
 {
     switch (designation) {
-        case Designation::SOFTWARE_DEVELOPER:
+        case Designation::Developer:
             return "Software Developer";
-        case Designation::SOFTWARE_LEAD:
+        case Designation::Lead:
             return "Software Lead";
-        case Designation::MANAGER:
+        case Designation::Manager:
             return "Manager";
-        case Designation::ACCOUNTANT:
+        case Designation::Accountant:
             return "Accountant";
     }
 }
@@ -81,9 +81,9 @@ std::string to_string(Designation designation)
 std::string to_string(Department department)
 {
     switch (department) {
-        case Department::DEVELOPMENT:
+        case Department::Development:
             return "Development";
-        case Department::FINANCE:
+        case Department::Finance:
             return "Finance";
         case Department::HR:
             return "HR";
@@ -107,22 +107,22 @@ std::vector<Employee> create_employees()
     std::vector<Employee> employees;
     employees.reserve(8);
 
-    employees.emplace_back(make_person("foo_7", "bar_7", 35, Gender::FEMALE),
-                    Department::DEVELOPMENT, Designation::SOFTWARE_LEAD, 70000);
-    employees.emplace_back(make_person("foo_6", "bar_6", 30, Gender::MALE),
-                    Department::DEVELOPMENT, Designation::SOFTWARE_DEVELOPER, 60000);
-    employees.emplace_back(make_person("foo_0", "bar_0", 25, Gender::FEMALE),
-                    Department::DEVELOPMENT, Designation::SOFTWARE_DEVELOPER, 40000);
-    employees.emplace_back(make_person("foo_1", "bar_1", 20, Gender::FEMALE),
-                    Department::DEVELOPMENT, Designation::SOFTWARE_DEVELOPER, 40000);
-    employees.emplace_back(make_person("foo_2", "bar_2", 35, Gender::MALE),
-                    Department::FINANCE, Designation::ACCOUNTANT, 30000);
-    employees.emplace_back(make_person("foo_3", "bar_3", 55, Gender::MALE),
-                    Department::DEVELOPMENT, Designation::SOFTWARE_DEVELOPER, 60000);
-    employees.emplace_back(make_person("foo_4", "bar_4", 45, Gender::FEMALE),
-                    Department::HR, Designation::MANAGER, 50000);
-    employees.emplace_back(make_person("foo_5", "bar_5", 65, Gender::MALE),
-                    Department::HR, Designation::MANAGER, 80000);
+    employees.emplace_back(make_person("foo_7", "bar_7", 35, Gender::Female),
+                    Department::Development, Designation::Lead, 70000);
+    employees.emplace_back(make_person("foo_6", "bar_6", 30, Gender::Male),
+                    Department::Development, Designation::Developer, 60000);
+    employees.emplace_back(make_person("foo_0", "bar_0", 25, Gender::Female),
+                    Department::Development, Designation::Developer, 40000);
+    employees.emplace_back(make_person("foo_1", "bar_1", 20, Gender::Female),
+                    Department::Development, Designation::Developer, 40000);
+    employees.emplace_back(make_person("foo_2", "bar_2", 35, Gender::Male),
+                    Department::Finance, Designation::Accountant, 30000);
+    employees.emplace_back(make_person("foo_3", "bar_3", 55, Gender::Male),
+                    Department::Development, Designation::Developer, 60000);
+    employees.emplace_back(make_person("foo_4", "bar_4", 45, Gender::Female),
+                    Department::HR, Designation::Manager, 50000);
+    employees.emplace_back(make_person("foo_5", "bar_5", 65, Gender::Male),
+                    Department::HR, Designation::Manager, 80000);
 
     return employees;
 }

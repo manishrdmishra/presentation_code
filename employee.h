@@ -6,9 +6,9 @@
 #include <iostream>
 #include <iterator>
 
-enum class Department {DEVELOPMENT, FINANCE, HR};
+enum class Department {Development, Finance, HR};
 
-enum class Designation {SOFTWARE_DEVELOPER, SOFTWARE_LEAD, ACCOUNTANT, MANAGER};
+enum class Designation {Developer, Lead, Accountant, Manager};
 
 //*******************************************************************************
 // Employee Interface
@@ -36,8 +36,8 @@ public:
 
     private:
         std::shared_ptr<Person> person_{nullptr};
-        Department department_{Department::DEVELOPMENT};
-        Designation designation_{Designation::SOFTWARE_DEVELOPER};
+        Department department_{Department::Development};
+        Designation designation_{Designation::Developer};
         int salary_;
 };
 

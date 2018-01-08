@@ -4,7 +4,7 @@
 #include <algorithm>
 #include <vector>
 
-enum class Gender {MALE, FEMALE};
+enum class Gender {Male, Female, Other};
 
 //*******************************************************************************
 // Person Interface
@@ -16,7 +16,7 @@ public:
     Person(std::string first_name = {},
         std::string last_name = {},
         int age = {},
-        Gender gender = Gender::MALE);
+        Gender gender = Gender::Male);
         std::string first_name() const;
         std::string last_name() const;
         int age() const;
