@@ -10,10 +10,10 @@ struct Foo
     ~Foo() { std::cout<< "Foo's destructor"<< "\n"; }
 };
 
-class Bar
+class IntPointer
 {
 public:
-    Bar()
+    IntPointer()
     {
         number_ptr_ = new int;
 
@@ -23,20 +23,20 @@ public:
         if(number_ptr_ == nullptr) throw std::runtime_error("Not enough memeory");
         *number_ptr_ = 0;
     }
-    Bar(int a)
+    IntPointer(int a)
     {
         number_ptr_ = new int;
         if(number_ptr_ == nullptr) throw std::runtime_error("Not enough memeory");
         *number_ptr_ = a;
 
-        std::cout << "Bar's constructor "<< "\n";
+        std::cout << "IntPointer's constructor "<< "\n";
         std::cout<< "value : " << *number_ptr_ << "\n";
     }
 
     void setValue(int x) { *number_ptr_ = x;}
-    ~Bar()
+    ~IntPointer()
     {
-        std::cout<<"Bar's destructor" << "\n";
+        std::cout<<"IntPointer's destructor" << "\n";
         delete number_ptr_;
     }
 

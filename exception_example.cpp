@@ -12,7 +12,7 @@ void createFoo()
 }
 
 
-Bar divide(int a, int b)
+IntPointer divide(int a, int b)
 {
     //*************************************************************************
     // If an exception occurs then, C++ calls destructors for all automatic objects
@@ -26,8 +26,8 @@ Bar divide(int a, int b)
 
         if(b == 0) throw std::runtime_error("divide by zero");
         int result = a/b;  // if exception occurs here then Foo's destructor is called
-        Bar b(result);
-        //...              // if exception occurs here then both Foo's and Bar's destructors are called
+        IntPointer b(result);
+        //...              // if exception occurs here then both Foo's and IntPointer's destructors are called
         return b;
     }
     catch(std::exception& e)
@@ -39,7 +39,7 @@ Bar divide(int a, int b)
 int main()
 {
     createFoo();
-    auto good_bar = divide(6,3);
-    auto bad_bar = divide(3,0);
+    auto good_IntPointer = divide(6,3);
+    auto bad_IntPointer = divide(3,0);
     return 0;
 }
