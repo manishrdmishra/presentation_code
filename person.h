@@ -3,6 +3,7 @@
 #include <string>
 #include <algorithm>
 #include <vector>
+#include <memory>
 
 enum class Gender {Male, Female, Other};
 
